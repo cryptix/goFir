@@ -356,14 +356,9 @@ func RunSimulation(input []int) *SimpleFirSim {
 	C.de_tuhh_hbubert_noiseCancel_simpleFir_rst = 0
 
 	// iterate over input
-	// pre := afterReset
-	// post := time.Now()
 	for _, x := range input {
 		// eval one cycle
 		data = append(data, runner.run(x))
-
-		// fmt.Printf("\n\nState[%d] ΔT[%v]\n%s\n", i, post.Sub(pre), sim)
-		// pre, post = post, time.Now()
 	}
 
 	done := time.Now()
