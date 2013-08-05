@@ -29,17 +29,17 @@
 	uint64_t de_tuhh_hbubert_noiseCancel_simpleFir_y$reg;
 	int epsCycle=0;
 	int deltaCycle=0;
-	void frame5f7() {
+	void frame665() {
 		uint64_t t0=1;//const1
 		uint64_t t1=t0 & 0xffffffll;//cast_uint[targetSize=24,currentSize=32]
 		de_tuhh_hbubert_noiseCancel_simpleFir_coeffs[0]=t1;
 	}
-	void frame5f9() {
+	void frame667() {
 		uint64_t t0=1;//const1
 		uint64_t t1=t0 & 0xffffffll;//cast_uint[targetSize=24,currentSize=32]
 		de_tuhh_hbubert_noiseCancel_simpleFir_coeffs[1]=t1;
 	}
-	void frame62c() {
+	void frame69a() {
 		uint64_t t0=de_tuhh_hbubert_noiseCancel_simpleFir_rst;
 		//loadInternal[internalIdx=19]
 		uint64_t t1=0;//const0
@@ -47,17 +47,17 @@
 		Pred_de_tuhh_hbubert_noiseCancel_simpleFir_rst=t2;
 		Pred_de_tuhh_hbubert_noiseCancel_simpleFir_rst_update=((uint64_t) deltaCycle << 16ll) | (epsCycle & 0xFFFF);
 	}
-	void frame5fb() {
+	void frame669() {
 		uint64_t t0=1;//const1
 		uint64_t t1=t0 & 0xffffffll;//cast_uint[targetSize=24,currentSize=32]
 		de_tuhh_hbubert_noiseCancel_simpleFir_coeffs[2]=t1;
 	}
-	void frame5fd() {
+	void frame66b() {
 		uint64_t t0=1;//const1
 		uint64_t t1=t0 & 0xffffffll;//cast_uint[targetSize=24,currentSize=32]
 		de_tuhh_hbubert_noiseCancel_simpleFir_coeffs[3]=t1;
 	}
-	void frame624() {
+	void frame692() {
 		de_tuhh_hbubert_noiseCancel_simpleFir_clk_update=((uint64_t) deltaCycle << 16l) | (epsCycle & 0xFFFF);//isRisingEdge[internalIdx=16]
 		//negPredicate[internalIdx=15]
 		uint64_t t2=de_tuhh_hbubert_noiseCancel_simpleFir_tap[0];
@@ -71,7 +71,7 @@
 			regUpdates[regUpdatePos++]=reg;
 		}
 	}
-	void frame626() {
+	void frame694() {
 		de_tuhh_hbubert_noiseCancel_simpleFir_clk_update=((uint64_t) deltaCycle << 16l) | (epsCycle & 0xFFFF);//isRisingEdge[internalIdx=16]
 		//negPredicate[internalIdx=15]
 		uint64_t t2=de_tuhh_hbubert_noiseCancel_simpleFir_tap[1];
@@ -85,7 +85,7 @@
 			regUpdates[regUpdatePos++]=reg;
 		}
 	}
-	void frame614() {
+	void frame682() {
 		de_tuhh_hbubert_noiseCancel_simpleFir_clk_update=((uint64_t) deltaCycle << 16l) | (epsCycle & 0xFFFF);//isRisingEdge[internalIdx=16]
 		//negPredicate[internalIdx=15]
 		uint64_t t2=de_tuhh_hbubert_noiseCancel_simpleFir_coeffs[0];
@@ -123,7 +123,7 @@
 			regUpdates[regUpdatePos++]=reg;
 		}
 	}
-	void frame628() {
+	void frame696() {
 		de_tuhh_hbubert_noiseCancel_simpleFir_clk_update=((uint64_t) deltaCycle << 16l) | (epsCycle & 0xFFFF);//isRisingEdge[internalIdx=16]
 		//negPredicate[internalIdx=15]
 		uint64_t t2=de_tuhh_hbubert_noiseCancel_simpleFir_tap[2];
@@ -137,7 +137,7 @@
 			regUpdates[regUpdatePos++]=reg;
 		}
 	}
-	void frame62a() {
+	void frame698() {
 		de_tuhh_hbubert_noiseCancel_simpleFir_clk_update=((uint64_t) deltaCycle << 16l) | (epsCycle & 0xFFFF);//isRisingEdge[internalIdx=16]
 		//negPredicate[internalIdx=15]
 		uint64_t t2=de_tuhh_hbubert_noiseCancel_simpleFir_x;
@@ -151,7 +151,7 @@
 			regUpdates[regUpdatePos++]=reg;
 		}
 	}
-	void frame603() {
+	void frame671() {
 		//posPredicate[internalIdx=15]
 		de_tuhh_hbubert_noiseCancel_simpleFir_clk_update=((uint64_t) deltaCycle << 16l) | (epsCycle & 0xFFFF);//isRisingEdge[internalIdx=16]
 		uint64_t t2=0;//const0
@@ -168,7 +168,7 @@
 		//Write to #null 
 		(void)t5;
 	}
-	void frame605() {
+	void frame673() {
 		//posPredicate[internalIdx=15]
 		de_tuhh_hbubert_noiseCancel_simpleFir_clk_update=((uint64_t) deltaCycle << 16l) | (epsCycle & 0xFFFF);//isRisingEdge[internalIdx=16]
 		uint64_t t2=0;//const0
@@ -264,11 +264,11 @@
 		epsCycle=0;
 		do {
 			regUpdatePos=0;
-		frame5f7();
-		frame5f9();
-		frame62c();
-		frame5fb();
-		frame5fd();
+		frame665();
+		frame667();
+		frame69a();
+		frame669();
+		frame66b();
 		bool de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising=true;
 		bool de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled=false;
 		if (!disableEdges){
@@ -288,19 +288,19 @@
 			p15_fresh=false;
 		}
 		if (de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising&& !de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled && !p15 && p15_fresh)
-			frame624();
+			frame692();
 		if (de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising&& !de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled && !p15 && p15_fresh)
-			frame626();
+			frame694();
 		if (de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising&& !de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled && !p15 && p15_fresh)
-			frame614();
+			frame682();
 		if (de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising&& !de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled && !p15 && p15_fresh)
-			frame628();
+			frame696();
 		if (de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising&& !de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled && !p15 && p15_fresh)
-			frame62a();
+			frame698();
 		if (de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising&& !de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled && p15 && p15_fresh)
-			frame603();
+			frame671();
 		if (de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising&& !de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled && p15 && p15_fresh)
-			frame605();
+			frame673();
 		updateRegs();
 		epsCycle++;
 		} while (regUpdatePos!=0 && !disabledRegOutputlogic);
