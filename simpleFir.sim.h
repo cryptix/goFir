@@ -1,5 +1,34 @@
-#include "simpleFir.sim.h"
-	void framec61() {
+#include <stdint.h>
+#include <stdbool.h>
+#include <string.h>
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+	typedef struct regUpdate {
+		int internal;
+		int offset;
+	} regUpdate_t;
+	
+	regUpdate_t regUpdates[11];
+	int regUpdatePos=0;
+	bool disableEdges;
+	bool disabledRegOutputlogic;
+	uint64_t Pred_de_tuhh_hbubert_noiseCancel_simpleFir_rst_update=0;
+	bool Pred_de_tuhh_hbubert_noiseCancel_simpleFir_rst;
+	uint64_t de_tuhh_hbubert_noiseCancel_simpleFir_Width;
+	uint64_t de_tuhh_hbubert_noiseCancel_simpleFir_clk_update=0;
+	uint64_t de_tuhh_hbubert_noiseCancel_simpleFir_clk;
+	uint64_t de_tuhh_hbubert_noiseCancel_simpleFir_clk_prev;
+	uint64_t de_tuhh_hbubert_noiseCancel_simpleFir_rst;
+	uint64_t de_tuhh_hbubert_noiseCancel_simpleFir_tap[4];
+	uint64_t de_tuhh_hbubert_noiseCancel_simpleFir_tap$reg[4];
+	uint64_t de_tuhh_hbubert_noiseCancel_simpleFir_x;
+	uint64_t de_tuhh_hbubert_noiseCancel_simpleFir_y;
+	uint64_t de_tuhh_hbubert_noiseCancel_simpleFir_y$reg;
+	int epsCycle=0;
+	int deltaCycle=0;
+	void frame450() {
 		uint64_t t0=de_tuhh_hbubert_noiseCancel_simpleFir_rst;
 		//loadInternal[internalIdx=15]
 		uint64_t t1=0;//const0
@@ -7,7 +36,7 @@
 		Pred_de_tuhh_hbubert_noiseCancel_simpleFir_rst=t2;
 		Pred_de_tuhh_hbubert_noiseCancel_simpleFir_rst_update=((uint64_t) deltaCycle << 16ll) | (epsCycle & 0xFFFF);
 	}
-	void framec51() {
+	void frame440() {
 		de_tuhh_hbubert_noiseCancel_simpleFir_clk_update=((uint64_t) deltaCycle << 16l) | (epsCycle & 0xFFFF);//isRisingEdge[internalIdx=12]
 		//negPredicate[internalIdx=11]
 		uint64_t t2=de_tuhh_hbubert_noiseCancel_simpleFir_tap[0];
@@ -28,12 +57,12 @@
 		de_tuhh_hbubert_noiseCancel_simpleFir_y$reg=t9;
 		static regUpdate_t reg;
 		if (current!=t9){
-			reg.internal=6;
+			reg.internal=7;
 			reg.offset=0;
 			regUpdates[regUpdatePos++]=reg;
 		}
 	}
-	void framec59() {
+	void frame448() {
 		de_tuhh_hbubert_noiseCancel_simpleFir_clk_update=((uint64_t) deltaCycle << 16l) | (epsCycle & 0xFFFF);//isRisingEdge[internalIdx=12]
 		//negPredicate[internalIdx=11]
 		uint64_t t2=de_tuhh_hbubert_noiseCancel_simpleFir_tap[0];
@@ -42,12 +71,12 @@
 		de_tuhh_hbubert_noiseCancel_simpleFir_tap$reg[1]=t2;
 		static regUpdate_t reg;
 		if (current!=t2){
-			reg.internal=3;
+			reg.internal=5;
 			reg.offset=1;
 			regUpdates[regUpdatePos++]=reg;
 		}
 	}
-	void framec5b() {
+	void frame44a() {
 		de_tuhh_hbubert_noiseCancel_simpleFir_clk_update=((uint64_t) deltaCycle << 16l) | (epsCycle & 0xFFFF);//isRisingEdge[internalIdx=12]
 		//negPredicate[internalIdx=11]
 		uint64_t t2=de_tuhh_hbubert_noiseCancel_simpleFir_tap[1];
@@ -56,12 +85,12 @@
 		de_tuhh_hbubert_noiseCancel_simpleFir_tap$reg[2]=t2;
 		static regUpdate_t reg;
 		if (current!=t2){
-			reg.internal=3;
+			reg.internal=5;
 			reg.offset=2;
 			regUpdates[regUpdatePos++]=reg;
 		}
 	}
-	void framec41() {
+	void frame430() {
 		//posPredicate[internalIdx=11]
 		de_tuhh_hbubert_noiseCancel_simpleFir_clk_update=((uint64_t) deltaCycle << 16l) | (epsCycle & 0xFFFF);//isRisingEdge[internalIdx=12]
 		uint64_t t2=0;//const0
@@ -69,7 +98,7 @@
 		de_tuhh_hbubert_noiseCancel_simpleFir_y$reg=t3;
 		{
 			static regUpdate_t reg;
-			reg.internal=6;
+			reg.internal=7;
 			reg.offset=-1;
 			regUpdates[regUpdatePos++]=reg;
 		}
@@ -78,7 +107,7 @@
 		//Write to #null 
 		(void)t5;
 	}
-	void framec5d() {
+	void frame44c() {
 		de_tuhh_hbubert_noiseCancel_simpleFir_clk_update=((uint64_t) deltaCycle << 16l) | (epsCycle & 0xFFFF);//isRisingEdge[internalIdx=12]
 		//negPredicate[internalIdx=11]
 		uint64_t t2=de_tuhh_hbubert_noiseCancel_simpleFir_tap[2];
@@ -87,20 +116,20 @@
 		de_tuhh_hbubert_noiseCancel_simpleFir_tap$reg[3]=t2;
 		static regUpdate_t reg;
 		if (current!=t2){
-			reg.internal=3;
+			reg.internal=5;
 			reg.offset=3;
 			regUpdates[regUpdatePos++]=reg;
 		}
 	}
-	void framec43() {
+	void frame432() {
 		//posPredicate[internalIdx=11]
 		de_tuhh_hbubert_noiseCancel_simpleFir_clk_update=((uint64_t) deltaCycle << 16l) | (epsCycle & 0xFFFF);//isRisingEdge[internalIdx=12]
 		uint64_t t2=0;//const0
 		memset(de_tuhh_hbubert_noiseCancel_simpleFir_tap$reg, t2, 4);
 		{
 			static regUpdate_t reg;
-			reg.internal=3;
-			reg.offset=0;
+			reg.internal=5;
+			reg.offset=-1;
 			regUpdates[regUpdatePos++]=reg;
 		}
 		//writeInternal[internal=13]
@@ -111,8 +140,8 @@
 		de_tuhh_hbubert_noiseCancel_simpleFir_tap$reg[a0]=t6;
 		{
 			static regUpdate_t reg;
-			reg.internal=3;
-			reg.offset=-1;
+			reg.internal=5;
+			reg.offset=a0;
 			regUpdates[regUpdatePos++]=reg;
 		}
 		//writeInternal[internal=13]
@@ -123,8 +152,8 @@
 		de_tuhh_hbubert_noiseCancel_simpleFir_tap$reg[a1]=t10;
 		{
 			static regUpdate_t reg;
-			reg.internal=3;
-			reg.offset=-1;
+			reg.internal=5;
+			reg.offset=a1;
 			regUpdates[regUpdatePos++]=reg;
 		}
 		//writeInternal[internal=13]
@@ -135,8 +164,8 @@
 		de_tuhh_hbubert_noiseCancel_simpleFir_tap$reg[a2]=t14;
 		{
 			static regUpdate_t reg;
-			reg.internal=3;
-			reg.offset=-1;
+			reg.internal=5;
+			reg.offset=a2;
 			regUpdates[regUpdatePos++]=reg;
 		}
 		//writeInternal[internal=13]
@@ -147,8 +176,8 @@
 		de_tuhh_hbubert_noiseCancel_simpleFir_tap$reg[a3]=t18;
 		{
 			static regUpdate_t reg;
-			reg.internal=3;
-			reg.offset=-1;
+			reg.internal=5;
+			reg.offset=a3;
 			regUpdates[regUpdatePos++]=reg;
 		}
 		//writeInternal[internal=13]
@@ -156,7 +185,7 @@
 		//Write to #null 
 		(void)t20;
 	}
-	void framec5f() {
+	void frame44e() {
 		de_tuhh_hbubert_noiseCancel_simpleFir_clk_update=((uint64_t) deltaCycle << 16l) | (epsCycle & 0xFFFF);//isRisingEdge[internalIdx=12]
 		//negPredicate[internalIdx=11]
 		uint64_t t2=de_tuhh_hbubert_noiseCancel_simpleFir_x;
@@ -165,7 +194,7 @@
 		de_tuhh_hbubert_noiseCancel_simpleFir_tap$reg[0]=t2;
 		static regUpdate_t reg;
 		if (current!=t2){
-			reg.internal=3;
+			reg.internal=5;
 			reg.offset=0;
 			regUpdates[regUpdatePos++]=reg;
 		}
@@ -187,12 +216,12 @@
 		for (i=0;i<regUpdatePos; i++) {
 			regUpdate_t reg=regUpdates[i];
 			switch (reg.internal) {
-				case 3: 
+				case 5: 
 				if (reg.offset==-1)
 					memcpy(de_tuhh_hbubert_noiseCancel_simpleFir_tap, de_tuhh_hbubert_noiseCancel_simpleFir_tap$reg, 4);
 				else
 					de_tuhh_hbubert_noiseCancel_simpleFir_tap[reg.offset] = de_tuhh_hbubert_noiseCancel_simpleFir_tap$reg[reg.offset]; break;
-				case 6: 
+				case 7: 
 				de_tuhh_hbubert_noiseCancel_simpleFir_y = de_tuhh_hbubert_noiseCancel_simpleFir_y$reg; break;
 			}
 		}
@@ -202,7 +231,7 @@
 		epsCycle=0;
 		do {
 			regUpdatePos=0;
-		framec61();
+		frame450();
 		bool de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising=true;
 		bool de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled=false;
 		if (!disableEdges){
@@ -222,19 +251,19 @@
 			p11_fresh=false;
 		}
 		if (de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising&& !de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled && !p11 && p11_fresh)
-			framec51();
+			frame440();
 		if (de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising&& !de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled && !p11 && p11_fresh)
-			framec59();
+			frame448();
 		if (de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising&& !de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled && !p11 && p11_fresh)
-			framec5b();
+			frame44a();
 		if (de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising&& !de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled && p11 && p11_fresh)
-			framec41();
+			frame430();
 		if (de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising&& !de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled && !p11 && p11_fresh)
-			framec5d();
+			frame44c();
 		if (de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising&& !de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled && p11 && p11_fresh)
-			framec43();
+			frame432();
 		if (de_tuhh_hbubert_noiseCancel_simpleFir_clk_isRising&& !de_tuhh_hbubert_noiseCancel_simpleFir_clk_risingIsHandled && !p11 && p11_fresh)
-			framec5f();
+			frame44e();
 		updateRegs();
 		epsCycle++;
 		} while (regUpdatePos!=0 && !disabledRegOutputlogic);
