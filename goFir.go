@@ -1,8 +1,9 @@
 package goFir
 
-/*
- #include "simpleFir.sim.h"
-*/
+// update simulator code with
+// curl -X POST -d module=de.tuhh.hbubert.noiseCancel.simpleFir http://api.pshdl.org/api/v0.1/compiler/46B03EAE542184E3/psex/c > simpleFir.sim.h
+
+// #include "simpleFir.sim.h"
 import "C"
 
 import (
