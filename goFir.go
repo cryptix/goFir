@@ -1,7 +1,7 @@
 package goFir
 
 /*
- #include "simpleFir.sim.c"
+ #include "simpleFir.sim.h"
 */
 import "C"
 
