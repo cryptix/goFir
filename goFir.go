@@ -8,6 +8,18 @@ import (
 	"time"
 )
 
+const (
+	_ = iota
+	idxRstPred
+	idxWidth
+	idxClk
+	idxCoeffs
+	idxRst
+	idxTap
+	idxX
+	idxY
+)
+
 type SimpleFirSim struct {
 	Input    []int
 	Data     []State
@@ -31,8 +43,14 @@ func (s State) String() string {
 }
 
 func (s *State) update() {
-	s.X = int(C.de_tuhh_hbubert_noiseCancel_simpleFir_x)
-	s.Y = int(C.de_tuhh_hbubert_noiseCancel_simpleFir_y)
+	s.X = int(C.pshdl_sim_getOutput(idxX))
+	s.Y = int(C.pshdl_sim_getOutput(idxY))
+	// s.X = int(C.de_tuhh_hbubert_noiseCancel_simpleFir_x)
+	// s.Y = int(C.de_tuhh_hbubert_noiseCancel_simpleFir_y)
+
+	// cgo doesnt support variadic arguments :<
+	// https://code.google.com/p/go/issues/detail?id=975
+	// fmt.Println(C.pshdl_sim_getOutput(idxTap))
 	for i, v := range C.de_tuhh_hbubert_noiseCancel_simpleFir_tap {
 		s.Tap[i] = int(v)
 	}
@@ -41,18 +59,20 @@ func (s *State) update() {
 // reset simulation
 func (sim SimpleFirSim) reset() {
 	// enable rst
-	C.de_tuhh_hbubert_noiseCancel_simpleFir_rst = 1
-	C.de_tuhh_hbubert_noiseCancel_simpleFir_clk = 0
-	C.run()
-	C.de_tuhh_hbubert_noiseCancel_simpleFir_clk = 1
-	C.run()
+	C.pshdl_sim_setInput(idxRst, 1)
+	C.pshdl_sim_setInput(idxClk, 0)
+
+	C.pshdl_sim_run()
+	C.pshdl_sim_setInput(idxClk, 1)
+	C.pshdl_sim_run()
 
 	// disable rst
-	C.de_tuhh_hbubert_noiseCancel_simpleFir_rst = 0
-	C.de_tuhh_hbubert_noiseCancel_simpleFir_clk = 0
-	C.run()
-	C.de_tuhh_hbubert_noiseCancel_simpleFir_clk = 1
-	C.run()
+	C.pshdl_sim_setInput(idxRst, 0)
+	C.pshdl_sim_setInput(idxClk, 0)
+
+	C.pshdl_sim_run()
+	C.pshdl_sim_setInput(idxClk, 1)
+	C.pshdl_sim_run()
 }
 
 // read state from simulation code
@@ -61,13 +81,14 @@ func (sim SimpleFirSim) run(input int) State {
 
 	s.X = input
 	// update input
-	C.de_tuhh_hbubert_noiseCancel_simpleFir_x = C.uint64_t(s.X)
+	C.pshdl_sim_setInput(idxX, C.long(s.X))
 
 	// run one cycle
-	C.de_tuhh_hbubert_noiseCancel_simpleFir_clk = 0
-	C.run()
-	C.de_tuhh_hbubert_noiseCancel_simpleFir_clk = 1
-	C.run()
+	C.pshdl_sim_setInput(idxClk, 0)
+
+	C.pshdl_sim_run()
+	C.pshdl_sim_setInput(idxClk, 1)
+	C.pshdl_sim_run()
 
 	// read output
 	s.update()
